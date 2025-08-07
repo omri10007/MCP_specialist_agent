@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "mcp-specialist-python": {
+      "command": "uv",
+      "args": [
+        "python",
+        "/path/to/mcp_specialist/python_server/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    },
+    "mcp-specialist-typescript": {
+      "command": "node",
+      "args": [
+        "dist/index.mjs"
+      ],
+      "cwd": "/path/to/mcp_specialist/typescript_server",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

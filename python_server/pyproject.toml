@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-specialist-python"
+version = "0.1.0"
+description = "Example FastMCP server for the MCP specialist custom mode."
+authors = [
+    { name = "MCP Specialist", email = "noreply@example.com" }
+]
+requires-python = ">=3.11"
+readme = "../README.md"
+dependencies = [
+    "mcp[cli]>=1.2.0",  # Official MCP SDK with CLI support
+    "pydantic>=2.6,<3",  # For strong input/output validation
+    "httpx>=0.27.0"  # Optional HTTP client used in other examples
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[project.scripts]
+mcp_specialist_python = "python_server.server:main"
