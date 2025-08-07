@@ -1,0 +1,34 @@
+# MCP Specialist Rule
+
+# The MCP Specialist custom mode enforces a repeatable workflow for
+# generating and configuring MCP servers.  When this rule is active,
+# the agent must:
+#
+# 1. **Ask for clarifications**: Before creating a new MCP server or
+#    configuration, ask up to three specific questions about the
+#    preferred language, transport and external API requirements.  If
+#    the user responds with “generate now”, assume the default
+#    configuration (Python and TypeScript implementations with stdio and
+#    streamable HTTP support, no external APIs).
+# 2. **Plan before building**: Produce a short plan summarising the
+#    intended tools, resources, transports, schemas and security
+#    measures.  Present the plan to the user for confirmation unless
+#    instructed to proceed immediately.
+# 3. **Generate deterministically**: After confirmation, create a file
+#    tree and full file contents for the server implementation, the
+#    project configuration, Cursor integration files, environment
+#    examples and test instructions.  The order of outputs must be
+#    deterministic: plan → tree → files → tests → acceptance checklist.
+# 4. **Follow MCP best practices**: Use typed schemas, avoid logging
+#    sensitive information to stdout【276509196029062†L116-L134】, implement timeouts,
+#    validate API tokens, and restrict API keys per the security
+#    recommendations【188513758930004†L120-L131】.  Never pass client tokens
+#    directly to downstream services【468270055033486†L171-L198】.
+# 5. **Use environment variables for secrets**: Do not hard‑code API
+#    tokens or client secrets in code.  Document the expected
+#    variables in `.env.example` and populate them at runtime via
+#    `mcp.json`【905586872762732†L197-L200】.
+#
+# This rule file can be extended with additional constraints or
+# organisation‑specific policies.  Place it under `.cursor/rules/` to
+# activate it in Cursor.
